@@ -1,32 +1,32 @@
 [{
     "name": "Accelerated Beta Test",
     "player": "corp",
-    "faction": "Haas-Bioroid",
-    "type": "Agenda",
+    "faction": "haas-bioroid",
+    "type": "agenda",
     "cost": 3,
     "points": 2,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_accelerated-beta-test-core.png"
 }, {
     "name": "Adonis Campaign",
     "player": "corp",
-    "faction": "Haas-Bioroid",
-    "type": "Asset",
+    "faction": "haas-bioroid",
+    "type": "asset",
     "cost": 4,
     "influence": 2,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_adonis-campaign-core.png"
 }, {
     "name": "Aggressive Negotiation",
     "player": "corp",
-    "faction": "Weyland",
-    "type": "Operation",
+    "faction": "weyland",
+    "type": "operation",
     "cost": 1,
     "influence": 1,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_aggressive-negotiation-core.png"
 }, {
     "name": "Aggressive Secretary",
     "player": "corp",
-    "faction": "Haas-Bioroid",
-    "type": "Asset",
+    "faction": "haas-bioroid",
+    "type": "asset",
     "cost": 0,
     "influence": 2,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_aggressive-secretary-core.png"
@@ -34,7 +34,7 @@
     "name": "Akitaro Wantanabe",
     "player": "corp",
     "faction": "Jinteki",
-    "type": "Upgrade",
+    "type": "upgrade",
     "cost": 1,
     "influence": 2,
     "trash": 3,
@@ -42,8 +42,8 @@
 }, {
     "name": "Amazon Industrial Zone",
     "player": "corp",
-    "faction": "Weyland",
-    "type": "Upgrade",
+    "faction": "weyland",
+    "type": "upgrade",
     "cost": 5,
     "influence": 1,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_amazon-industrial-zone-trace-amount.png"
@@ -51,23 +51,24 @@
     "name": "Anonymous Tip",
     "player": "corp",
     "faction": "NBN",
-    "type": "Operation",
+    "type": "operation",
     "cost": 0,
     "influence": 1,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_anonymous-tip-core.png"
 }, {
     "name": "Archer",
     "player": "corp",
-    "faction": "Weyland",
-    "type": "Sentry",
+    "faction": "weyland",
+    "type": "ice",
+    "ice-type": "sentry",
     "cost": 6,
     "influence": 2,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_archer-core.png"
 }, {
     "name": "Access to Globalsec",
     "player": "runner",
-    "faction": "Neutral",
-    "type": "Resource",
+    "faction": "neutral",
+    "type": "resource",
     "cost": 1,
     "influence": 0,
     "image": "http://www.cardgamedb.com/forums/uploads/an/ffg_access-to-globalsec-core.png"}]

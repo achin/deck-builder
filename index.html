@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="deck-builder">
   <head>
     <title>Android: Netrunner Deck Builder</title>
-    <script src="lib/angular/angular.js"></script>
     <script src="lib/jquery/jquery-1.9.1.js"></script>
+    <script src="lib/select2/select2.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-ui/build/angular-ui.js"></script>
     <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="lib/lodash/lodash.js"></script>
     <script src="js/library.js"></script>
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" />
+    <link href="lib/angular-ui/build/angular-ui.css" rel="stylesheet" media="screen" />
+    <link href="lib/select2/select2.css" rel="stylesheet" media="screen" />
     <style>
       body {
         padding-top: 60px;
@@ -28,41 +33,39 @@
     </div>
     <div class="container">
       <h1>Library</h1>
-      <div ng-controller="LibraryCtrl">
+      <div ng-controller="LibraryCtrl" ng-init="filters=[]">
         <form class="form-inline">
-          <div class="btn-group" data-toggle="buttons-radio">
-            <button class="btn active" ng-click="search.player=''">All</button>
-            <button class="btn" ng-click="search.player='corp'">Corp</button>
-            <button class="btn" ng-click="search.player='runner'">Runner</button>
-          </div>
-          <select class="input-medium" ng-model="search.faction">
-            <option value="">All factions</option>
-            <option>Anarch</option>
-            <option>Criminal</option>
-            <option>Haas-Bioroid</option>
-            <option>Jinteki</option>
-            <option>NBN</option>
-            <option>Neutral</option>
-            <option>Shaper</option>
-            <option>Weyland</option>
+          <select multiple="yes" class="input-xxlarge" data-placeholder="Add filters" ui-select2 ng-model="filters">
+            <optgroup label="Players">
+              <option value="player:corp">Corp</option>
+              <option value="player:runner">Runner</option>
+            </optgroup>
+            <optgroup label="Factions">
+              <option value="faction:anarch">Anarch</option>
+              <option value="faction:criminal">Criminal</option>
+              <option value="faction:haas-bioroid">Haas-Bioroid</option>
+              <option value="faction:jinteki">Jinteki</option>
+              <option value="faction:nbn">NBN</option>
+              <option value="faction:neutral">Neutral</option>
+              <option value="faction:shaper">Shaper</option>
+              <option value="faction:weyland">Weyland</option>
+            </optgroup>
+            <optgroup label="Types">
+              <option value="type:agenda">Agenda</option>
+              <option value="type:asset">Asset</option>
+              <option value="type:event">Event</option>
+              <option value="type:hardware">Hardware</option>
+              <option value="type:ice">Ice</option>
+              <option value="type:identity">Identity</option>
+              <option value="type:operation">Operation</option>
+              <option value="type:program">Program</option>
+              <option value="type:resource">Resource</option>
+              <option value="type:upgrade">Upgrade</option>
+            </optgroup>
           </select>
-          <select class="input-medium" ng-model="search.type">
-            <option value="">All types</option>
-            <option>Agenda</option>
-            <option>Asset</option>
-            <option>Event</option>
-            <option>Hardware</option>
-            <option>Ice</option>
-            <option>Identity</option>
-            <option>Operation</option>
-            <option>Program</option>
-            <option>Resource</option>
-            <option>Upgrade</option>
-          </select>
-          <input type="text" class="search-query pull-right" placeholder="Search" ng-model="search.$"/>
         </form>
         <ul class="thumbnails">
-          <li ng-repeat="card in library | filter:search" class="span3">
+          <li ng-repeat="card in library | filter:filterLibrary" class="span3">
             <div class="thumbnail">
               <img ng-src="{{card.image}}"/>
             </div>
