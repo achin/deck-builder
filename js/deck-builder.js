@@ -1,11 +1,22 @@
 var app = angular.module("deck-builder", ["ui"]);
 
-app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http) {
+app.config(function($locationProvider) {
+    $locationProvider.html5Mode(true);
+});
+
+app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http, $location) {
     $scope.filters = [];
     $scope.deck = {};
 
     $http.get("library.json").success(function(data) {
         $scope.library = data;
+        $scope.libraryIndex = _($scope.library)
+            .map(function(card) {
+                return [card.name, card];
+            })
+            .object()
+            .valueOf();
+        $scope.deck = deckFromMap($location.search(), $scope.libraryIndex);
     });
 
     $scope.filterLibrary = function(card) {
@@ -33,6 +44,7 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http) {
         }
 
         $scope.deck[card.name].count++;
+        updateLocation($scope.deck);
     };
 
     $scope.removeCard = function(card) {
@@ -43,5 +55,28 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http) {
         if (--$scope.deck[card.name].count <= 0) {
             delete $scope.deck[card.name];
         }
+        updateLocation($scope.deck);
     };
+
+    var deckAsMap = function(deck) {
+        return _(deck)
+            .map(function(card, cardName) {
+                return [card.name, card.count];
+            })
+            .object()
+            .valueOf();
+    };
+
+    var deckFromMap = function(m, libraryIndex) {
+        return _(m)
+            .map(function(count, cardName) {
+                return [cardName, _.merge(libraryIndex[cardName], {count: parseInt(count)})];
+            })
+            .object()
+            .valueOf();
+    };
+
+    var updateLocation = function(deck) {
+        $location.search(deckAsMap(deck));
+    }
 });
