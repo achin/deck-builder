@@ -12,6 +12,7 @@
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" />
     <link href="lib/angular-ui/build/angular-ui.css" rel="stylesheet" media="screen" />
     <link href="lib/select2/select2.css" rel="stylesheet" media="screen" />
+    <link href="css/deck-builder.css" rel="stylesheet" media="screen" />
     <style>
       body {
         padding-top: 60px;
@@ -33,7 +34,8 @@
     </div>
     <div class="container">
       <h1>Library</h1>
-      <div ng-controller="LibraryCtrl" ng-init="filters=[]">
+      <div ng-controller="LibraryCtrl">
+        <pre>{{deck}}</pre>
         <form class="form-inline">
           <select multiple="yes" class="input-xxlarge" data-placeholder="Add filters" ui-select2 ng-model="filters">
             <optgroup label="Players">
@@ -66,7 +68,13 @@
         </form>
         <ul class="thumbnails">
           <li ng-repeat="card in library | filter:filterLibrary" class="span3">
-            <div class="thumbnail">
+            <div class="thumbnail card">
+              <button class="btn btn-large btn-inverse plus" ng-click="addCard(card)">
+                <i class="icon-plus icon-white"></i>
+              </button>
+              <button class="btn btn-large btn-inverse minus" ng-click="removeCard(card)">
+                <i class="icon-minus icon-white"></i>
+              </button>
               <img ng-src="{{card.image}}"/>
             </div>
           </li>

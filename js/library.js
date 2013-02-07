@@ -1,6 +1,9 @@
 var app = angular.module("deck-builder", ["ui"]);
 
 app.controller("LibraryCtrl", function LibraryCtrl($scope, $http) {
+    $scope.filters = [];
+    $scope.deck = {};
+
     $http.get("library.json").success(function(data) {
         $scope.library = data;
     });
@@ -19,4 +22,14 @@ app.controller("LibraryCtrl", function LibraryCtrl($scope, $http) {
             })
             .valueOf();
     }
+
+    $scope.addCard = function(card) {
+        $scope.deck[card.name] = $scope.deck[card.name] + 1 || 1;
+    };
+
+    $scope.removeCard = function(card) {
+        if (_.has($scope.deck, card.name) && --$scope.deck[card.name] <= 0) {
+            delete $scope.deck[card.name];
+        }
+    };
 });
