@@ -34,10 +34,6 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http, $locat
             .valueOf();
     }
 
-    $scope.cardId = function(card) {
-        return card.name.replace(/ /g, "");
-    };
-
     $scope.addCard = function(card) {
         if (!$scope.deck[card.name]) {
             $scope.deck[card.name] = _.merge(card, {count: 0});
