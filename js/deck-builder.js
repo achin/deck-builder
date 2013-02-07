@@ -1,6 +1,6 @@
 var app = angular.module("deck-builder", ["ui"]);
 
-app.controller("LibraryCtrl", function LibraryCtrl($scope, $http) {
+app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http) {
     $scope.filters = [];
     $scope.deck = {};
 

@@ -8,7 +8,7 @@
     <script src="lib/angular-ui/build/angular-ui.js"></script>
     <script src="lib/bootstrap/js/bootstrap.js"></script>
     <script src="lib/lodash/lodash.js"></script>
-    <script src="js/library.js"></script>
+    <script src="js/deck-builder.js"></script>
     <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" />
     <link href="lib/angular-ui/build/angular-ui.css" rel="stylesheet" media="screen" />
     <link href="lib/select2/select2.css" rel="stylesheet" media="screen" />
@@ -32,9 +32,9 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
       <h1>Library</h1>
-      <div ng-controller="LibraryCtrl">
+      <div ng-controller="DeckBuilderCtrl">
         <pre>{{deck}}</pre>
         <form class="form-inline">
           <select multiple="yes" class="input-xxlarge" data-placeholder="Add filters" ui-select2 ng-model="filters">
