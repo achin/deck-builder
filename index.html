@@ -38,31 +38,31 @@
           <h1>Library</h1>
           <form class="form-inline">
             <select multiple="yes" style="width: 100%" data-placeholder="Add filters" ui-select2 ng-model="filters">
-              <optgroup label="Players">
-                <option value="player:corp">Corp</option>
-                <option value="player:runner">Runner</option>
+              <optgroup label="Side">
+                <option value="side:Corp">Corp</option>
+                <option value="side:Runner">Runner</option>
               </optgroup>
-              <optgroup label="Factions">
-                <option value="faction:anarch">Anarch</option>
-                <option value="faction:criminal">Criminal</option>
-                <option value="faction:haas-bioroid">Haas-Bioroid</option>
-                <option value="faction:jinteki">Jinteki</option>
-                <option value="faction:nbn">NBN</option>
-                <option value="faction:neutral">Neutral</option>
-                <option value="faction:shaper">Shaper</option>
-                <option value="faction:weyland">Weyland</option>
+              <optgroup label="Identity">
+                <option value="identity:Anarch">Anarch</option>
+                <option value="identity:Criminal">Criminal</option>
+                <option value="identity:Haas-bioroid">Haas-Bioroid</option>
+                <option value="identity:Jinteki">Jinteki</option>
+                <option value="identity:NBN">NBN</option>
+                <option value="identity:Neutral">Neutral</option>
+                <option value="identity:Shaper">Shaper</option>
+                <option value="identity:Weyland">Weyland</option>
               </optgroup>
               <optgroup label="Types">
-                <option value="type:agenda">Agenda</option>
-                <option value="type:asset">Asset</option>
-                <option value="type:event">Event</option>
-                <option value="type:hardware">Hardware</option>
-                <option value="type:ice">Ice</option>
-                <option value="type:identity">Identity</option>
-                <option value="type:operation">Operation</option>
-                <option value="type:program">Program</option>
-                <option value="type:resource">Resource</option>
-                <option value="type:upgrade">Upgrade</option>
+                <option value="type:Agenda">Agenda</option>
+                <option value="type:Asset">Asset</option>
+                <option value="type:Event">Event</option>
+                <option value="type:Hardware">Hardware</option>
+                <option value="type:ICE">Ice</option>
+                <option value="type:Identity">Identity</option>
+                <option value="type:Operation">Operation</option>
+                <option value="type:Program">Program</option>
+                <option value="type:Resource">Resource</option>
+                <option value="type:Upgrade">Upgrade</option>
               </optgroup>
             </select>
           </form>
@@ -75,7 +75,7 @@
                 <button class="btn btn-large btn-inverse minus" ng-click="removeCard(card)">
                   <i class="icon-minus icon-white"></i>
                 </button>
-                <img ng-src="{{card.image}}"/>
+                <img class="card-image" ng-src="{{image(card)}}"/>
               </div>
             </li>
           </ul>

@@ -19,3 +19,8 @@ div.card button.minus {
 div.card:hover button {
     display: block;
 }
+
+div.card img.card-image {
+    height: 288px;
+    width: 204px;
+}
