@@ -19,7 +19,7 @@
       }
     </style>
   </head>
-  <body>
+  <body ng-controller="DeckBuilderCtrl">
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -32,9 +32,9 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid">
+    <div class="container">
       <h1>Library</h1>
-      <div ng-controller="DeckBuilderCtrl">
+      <div>
         <pre>{{deck}}</pre>
         <form class="form-inline">
           <select multiple="yes" class="input-xxlarge" data-placeholder="Add filters" ui-select2 ng-model="filters">
