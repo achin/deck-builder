@@ -68,7 +68,7 @@
           </form>
           <ul class="thumbnails">
             <li ng-repeat="card in library | filter:filterLibrary" class="span3">
-              <div class="thumbnail card" id={{cardId(card.name)}}">
+              <div class="thumbnail card" id="{{cardId(card)}}">
                 <button class="btn btn-large btn-inverse plus" ng-click="addCard(card)">
                   <i class="icon-plus icon-white"></i>
                 </button>
@@ -83,8 +83,9 @@
         <div class="span3">
           <h1>Deck</h1>
           <ul class="unstyled">
-            <li ng-repeat="(cardName, n) in deck">
-              <span ng-class="{badge: true, 'badge-warning': n > 3}">{{n}}</span> {{cardName}}
+            <li ng-repeat="(cardName, card) in deck">
+              <span ng-class="{badge: true, 'badge-warning': card.count > 3}">{{card.count}}</span>
+              <a href="#{{cardId(card)}}">{{card.name}}</a>
             </li>
           </ul>
         </div>

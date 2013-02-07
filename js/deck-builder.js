@@ -24,15 +24,23 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http) {
     }
 
     $scope.cardId = function(card) {
-        return card.name.replace(" ", "");
+        return card.name.replace(/ /g, "");
     };
 
     $scope.addCard = function(card) {
-        $scope.deck[card.name] = $scope.deck[card.name] + 1 || 1;
+        if (!$scope.deck[card.name]) {
+            $scope.deck[card.name] = _.merge(card, {count: 0});
+        }
+
+        $scope.deck[card.name].count++;
     };
 
     $scope.removeCard = function(card) {
-        if (_.has($scope.deck, card.name) && --$scope.deck[card.name] <= 0) {
+        if (!$scope.deck[card.name]) {
+            return;
+        }
+
+        if (--$scope.deck[card.name].count <= 0) {
             delete $scope.deck[card.name];
         }
     };
