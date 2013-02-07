@@ -23,6 +23,10 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http) {
             .valueOf();
     }
 
+    $scope.cardId = function(card) {
+        return card.name.replace(" ", "");
+    };
+
     $scope.addCard = function(card) {
         $scope.deck[card.name] = $scope.deck[card.name] + 1 || 1;
     };

@@ -33,52 +33,61 @@
       </div>
     </div>
     <div class="container">
-      <h1>Library</h1>
-      <div>
-        <pre>{{deck}}</pre>
-        <form class="form-inline">
-          <select multiple="yes" class="input-xxlarge" data-placeholder="Add filters" ui-select2 ng-model="filters">
-            <optgroup label="Players">
-              <option value="player:corp">Corp</option>
-              <option value="player:runner">Runner</option>
-            </optgroup>
-            <optgroup label="Factions">
-              <option value="faction:anarch">Anarch</option>
-              <option value="faction:criminal">Criminal</option>
-              <option value="faction:haas-bioroid">Haas-Bioroid</option>
-              <option value="faction:jinteki">Jinteki</option>
-              <option value="faction:nbn">NBN</option>
-              <option value="faction:neutral">Neutral</option>
-              <option value="faction:shaper">Shaper</option>
-              <option value="faction:weyland">Weyland</option>
-            </optgroup>
-            <optgroup label="Types">
-              <option value="type:agenda">Agenda</option>
-              <option value="type:asset">Asset</option>
-              <option value="type:event">Event</option>
-              <option value="type:hardware">Hardware</option>
-              <option value="type:ice">Ice</option>
-              <option value="type:identity">Identity</option>
-              <option value="type:operation">Operation</option>
-              <option value="type:program">Program</option>
-              <option value="type:resource">Resource</option>
-              <option value="type:upgrade">Upgrade</option>
-            </optgroup>
-          </select>
-        </form>
-        <ul class="thumbnails">
-          <li ng-repeat="card in library | filter:filterLibrary" class="span3">
-            <div class="thumbnail card">
-              <button class="btn btn-large btn-inverse plus" ng-click="addCard(card)">
-                <i class="icon-plus icon-white"></i>
-              </button>
-              <button class="btn btn-large btn-inverse minus" ng-click="removeCard(card)">
-                <i class="icon-minus icon-white"></i>
-              </button>
-              <img ng-src="{{card.image}}"/>
-            </div>
-          </li>
-        </ul>
+      <div class="row">
+        <div class="span9">
+          <h1>Library</h1>
+          <form class="form-inline">
+            <select multiple="yes" style="width: 100%" data-placeholder="Add filters" ui-select2 ng-model="filters">
+              <optgroup label="Players">
+                <option value="player:corp">Corp</option>
+                <option value="player:runner">Runner</option>
+              </optgroup>
+              <optgroup label="Factions">
+                <option value="faction:anarch">Anarch</option>
+                <option value="faction:criminal">Criminal</option>
+                <option value="faction:haas-bioroid">Haas-Bioroid</option>
+                <option value="faction:jinteki">Jinteki</option>
+                <option value="faction:nbn">NBN</option>
+                <option value="faction:neutral">Neutral</option>
+                <option value="faction:shaper">Shaper</option>
+                <option value="faction:weyland">Weyland</option>
+              </optgroup>
+              <optgroup label="Types">
+                <option value="type:agenda">Agenda</option>
+                <option value="type:asset">Asset</option>
+                <option value="type:event">Event</option>
+                <option value="type:hardware">Hardware</option>
+                <option value="type:ice">Ice</option>
+                <option value="type:identity">Identity</option>
+                <option value="type:operation">Operation</option>
+                <option value="type:program">Program</option>
+                <option value="type:resource">Resource</option>
+                <option value="type:upgrade">Upgrade</option>
+              </optgroup>
+            </select>
+          </form>
+          <ul class="thumbnails">
+            <li ng-repeat="card in library | filter:filterLibrary" class="span3">
+              <div class="thumbnail card" id={{cardId(card.name)}}">
+                <button class="btn btn-large btn-inverse plus" ng-click="addCard(card)">
+                  <i class="icon-plus icon-white"></i>
+                </button>
+                <button class="btn btn-large btn-inverse minus" ng-click="removeCard(card)">
+                  <i class="icon-minus icon-white"></i>
+                </button>
+                <img ng-src="{{card.image}}"/>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="span3">
+          <h1>Deck</h1>
+          <ul class="unstyled">
+            <li ng-repeat="(cardName, n) in deck">
+              <span ng-class="{badge: true, 'badge-warning': n > 3}">{{n}}</span> {{cardName}}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </body>
