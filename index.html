@@ -34,7 +34,18 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="span9">
+        <div class="span3 fixed">
+          <div class="well">
+            <ul class="nav nav-list">
+              <li class="nav-header">Deck</li>
+              <li ng-repeat="(cardName, card) in deck">
+                <span ng-class="{badge: true, 'badge-warning': card.count > 3}">{{card.count}}</span>
+                {{card.name}}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9 offset3">
           <h1>Library</h1>
           <form class="form-inline">
             <select multiple="yes" style="width: 100%" data-placeholder="Add filters" ui-select2 ng-model="filters">
@@ -77,15 +88,6 @@
                 </button>
                 <img class="card-image" ng-src="{{image(card)}}"/>
               </div>
-            </li>
-          </ul>
-        </div>
-        <div class="span3">
-          <h1>Deck</h1>
-          <ul class="unstyled">
-            <li ng-repeat="(cardName, card) in deck">
-              <span ng-class="{badge: true, 'badge-warning': card.count > 3}">{{card.count}}</span>
-              {{card.name}}
             </li>
           </ul>
         </div>
