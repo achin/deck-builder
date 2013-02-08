@@ -90,4 +90,8 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http, $locat
             return card.type === type;
         });
     };
+
+    $scope.cardImage = function(card) {
+        return "img/cards/" + card.furl + ".png";
+    }
 });

@@ -35,7 +35,6 @@
     <div class="container">
       <div class="row">
         <div class="span3 fixed">
-          <p class="lead">Total Cards: {{totalCards(deck)}}</p>
           <div class="well well-small">
             <ul class="nav nav-list">
               <li ng-hide="totalCards(deck) > 0" class="nav-header">Empty Deck</li>
@@ -46,6 +45,7 @@
                   <span class="card-name">{{card.name}}</span>
                 </li>
               </div>
+              <p>Total Cards: {{totalCards(deck)}}</p>
             </ul>
           </div>
         </div>
@@ -90,7 +90,7 @@
                 <button class="btn btn-large btn-inverse minus" ng-click="removeCard(card)">
                   <i class="icon-minus icon-white"></i>
                 </button>
-                <img class="card-image" ng-src="img/cards/{{card.furl}}.png"/>
+                <img class="card-image" ng-src="{{cardImage(card)}}"/>
               </div>
             </li>
           </ul>
