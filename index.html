@@ -41,7 +41,7 @@
               <div ng-show="hasCardsOfType(deck, type)" class="nav" ng-repeat="type in types">
                 <li class="nav-header">{{type}}</li>
                 <li ng-repeat="card in cards(deck) | filter:{type: type}">
-                  <span ng-class="{badge: true, 'badge-warning': card.count > 3}">{{card.count}}</span>
+                  <span ng-class="{badge: true, 'badge-mini': true, 'badge-warning': card.count > 3}">{{card.count}}</span>
                   <span class="card-name">{{card.name}}</span>
                 </li>
               </div>

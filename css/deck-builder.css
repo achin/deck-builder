@@ -2,6 +2,13 @@
     position: fixed
 }
 
+.badge-mini {
+    font-size: 9px;
+    line-height: 9px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
 span.card-name {
     font-size: 12px;
 }
