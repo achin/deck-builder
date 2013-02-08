@@ -2,6 +2,10 @@
     position: fixed
 }
 
+span.card-name {
+    font-size: 12px;
+}
+
 div.card {
     position: relative;
 }

@@ -35,13 +35,17 @@
     <div class="container">
       <div class="row">
         <div class="span3 fixed">
-          <div class="well">
+          <p class="lead">Total Cards: {{totalCards(deck)}}</p>
+          <div class="well well-small">
             <ul class="nav nav-list">
-              <li class="nav-header">Deck</li>
-              <li ng-repeat="(cardName, card) in deck">
-                <span ng-class="{badge: true, 'badge-warning': card.count > 3}">{{card.count}}</span>
-                {{card.name}}
-              </li>
+              <li ng-hide="totalCards(deck) > 0" class="nav-header">Empty Deck</li>
+              <div ng-show="hasCardsOfType(deck, type)" class="nav" ng-repeat="type in types">
+                <li class="nav-header">{{type}}</li>
+                <li ng-repeat="card in cards(deck) | filter:{type: type}">
+                  <span ng-class="{badge: true, 'badge-warning': card.count > 3}">{{card.count}}</span>
+                  <span class="card-name">{{card.name}}</span>
+                </li>
+              </div>
             </ul>
           </div>
         </div>

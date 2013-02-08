@@ -16,6 +16,7 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http, $locat
             })
             .object()
             .valueOf();
+        $scope.types = _(data).pluck("type").uniq().valueOf();
         $scope.deck = deckFromMap($location.search(), $scope.libraryIndex);
     });
 
@@ -74,5 +75,19 @@ app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http, $locat
 
     var updateLocation = function(deck) {
         $location.search(deckAsMap(deck));
-    }
+    };
+
+    $scope.cards = function(deck) {
+        return _.values(deck);
+    };
+
+    $scope.totalCards = function(deck) {
+        return _.reduce(deck, function(sum, card) { return sum + card.count; }, 0);
+    };
+
+    $scope.hasCardsOfType = function(deck, type) {
+        return _.some(deck, function(card) {
+            return card.type === type;
+        });
+    };
 });
