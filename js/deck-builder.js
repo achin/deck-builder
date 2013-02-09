@@ -7,6 +7,11 @@ app.config(function($locationProvider) {
 app.controller("DeckBuilderCtrl", function DeckBuilderCtrl($scope, $http, $location) {
     $scope.filters = [];
     $scope.deck = {};
+    $scope.loc = $location;
+
+    $scope.$watch("loc.search()", function(search) {
+        $scope.deck = deckFromMap(search, $scope.libraryIndex);
+    });
 
     $http.get("library.json").success(function(data) {
         $scope.library = data;
